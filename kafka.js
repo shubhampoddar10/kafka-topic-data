@@ -30,8 +30,10 @@ const run = async () => {
     messages: [
       {
         value: JSON.stringify({
-          event: "Load testing by shubham",
-          message: "Hello from Shubham KafkaJS dev cluster!",
+          imei:"35436356363",
+          speed: 34.33,
+          latitude: 12.334,
+          longitude: 77.233
         }),
       },
     ],
