@@ -8,6 +8,11 @@ const kafka = new Kafka({
     process.env.KAFKA_BOOTSTRAP_SERVER_URL ||
       "my-cluster-kafka-bootstrap.my-kafka-project:9092",
   ],
+  sasl: {
+    mechanism: "scram-sha-512",
+    username: process.env.KAFKA_USERNAME,
+    password: process.env.KAFKA_PASSWORD,
+  },
 });
 
 const producer = kafka.producer();
