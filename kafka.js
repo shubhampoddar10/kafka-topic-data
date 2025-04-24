@@ -12,7 +12,7 @@ const kafka = new Kafka({
     mechanism: "scram-sha-512",
     username: process.env.KAFKA_USERNAME,
     password: process.env.KAFKA_PASSWORD,
-  },
+  }
 });
 
 const producer = kafka.producer();
