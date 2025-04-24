@@ -1,0 +1,16 @@
+{
+  "name": "kafkajs-esm-producer",
+  "version": "1.0.0",
+  "description": "KafkaJS producer using ES Modules and Nodemon",
+  "type": "module",
+  "main": "producer.js",
+  "scripts": {
+    "start": "nodemon producer.js"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}
