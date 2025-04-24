@@ -24,10 +24,8 @@ const run = async () => {
     topic: process.env.TOPIC, // Replace with your topic name
     messages: [
       {
-        key: "key1",
-        value: JSON.stringify({
-          message: "Hello from Shubham KafkaJS dev cluster!",
-        }),
+        event: "Load testing by shubham",
+        message: "Hello from Shubham KafkaJS dev cluster!",
       },
     ],
   });
