@@ -1,9 +1,13 @@
-// producer.mjs or producer.js
-import { Kafka } from 'kafkajs';
+import { Kafka } from "kafkajs";
+import dotenv from "dotenv";
+dotenv.config();
 
 const kafka = new Kafka({
-  clientId: 'my-esm-producer',
-  brokers: ['localhost:9092'], // Replace with your Kafka broker(s)
+  clientId: "my-esm-producer",
+  brokers: [
+    process.env.KAFKA_BOOTSTRAP_SERVER_URL ||
+      "my-cluster-kafka-bootstrap.my-kafka-project:9092",
+  ],
 });
 
 const producer = kafka.producer();
@@ -12,17 +16,21 @@ const run = async () => {
   await producer.connect();
 
   await producer.send({
-    topic: 'my-topic', // Replace with your topic name
+    topic: process.env.TOPIC, // Replace with your topic name
     messages: [
       {
-        key: 'key1',
-        value: JSON.stringify({ message: 'Hello from ESM KafkaJS!' }),
+        key: "key1",
+        value: JSON.stringify({
+          message: "Hello from Shubham KafkaJS dev cluster!",
+        }),
       },
     ],
   });
 
-  console.log('✅ Message published (ESM)');
+  console.log("✅ Message published (ESM)");
   await producer.disconnect();
 };
 
-run().catch(console.error);
+setInterval(() => {
+  run().catch(console.error);
+}, process.env.DATA_TIMER);

@@ -5,9 +5,10 @@
   "type": "module",
   "main": "producer.js",
   "scripts": {
-    "start": "nodemon producer.js"
+    "start": "nodemon kafka.js"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
     "kafkajs": "^2.2.4"
   },
   "devDependencies": {
