@@ -20,15 +20,25 @@ const producer = kafka.producer();
 const run = async () => {
   await producer.connect();
 
-  await producer.send({
-    topic: process.env.TOPIC, // Replace with your topic name
+  const message = {
+    event: "Load testing by shubham",
+    message: "Hello from Shubham KafkaJS dev cluster!",
+  };
+
+  const record = {
+    topic: process.env.TOPIC,
     messages: [
       {
-        event: "Load testing by shubham",
-        message: "Hello from Shubham KafkaJS dev cluster!",
+        value: JSON.stringify({
+          event: "Load testing by shubham",
+          message: "Hello from Shubham KafkaJS dev cluster!",
+        }),
       },
     ],
-  });
+  };
+
+  await producer.send(record);
+  console.log(record,"record");
 
   console.log("✅ Message published (ESM)");
   await producer.disconnect();
